@@ -19,5 +19,13 @@ class Travel(Base):
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, nullable=False)
     fullname = Column(String, nullable=False)
-    destination_province = Column(String, nullable=False)
+    destination_province_id = Column(Integer, nullable=False)
+    destination_province_name = Column(String, nullable=False)
     travel_date = Column(DateTime, nullable=False)
+
+class ProvinceDiscount(Base):
+    __tablename__ = "province_discounts"
+    id = Column(Integer, primary_key=True, index=True)
+    province = Column(String, unique=True, nullable=False, index=True)
+    secondary_province = Column(Integer, nullable=False)
+    discount_percentage = Column(Integer, nullable=False)

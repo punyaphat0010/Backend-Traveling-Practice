@@ -5,7 +5,8 @@ from datetime import datetime
 class TravelCreate(BaseModel):
     user_id: int
     fullname: str
-    destination_province: str
+    destination_province_id: int  # ProvinceDiscount id
+    destination_province_name: str
     travel_date: datetime
 
 class TravelResponse(TravelCreate):
@@ -25,3 +26,14 @@ class UserRegister(BaseModel):
 class UserLogin(BaseModel):
     username: str
     password: str
+
+class ProvinceDiscountCreate(BaseModel):
+    province: str
+    discount_percentage: int
+    secondary_province: int
+
+class ProvinceDiscountResponse(ProvinceDiscountCreate):
+    id: int
+
+    class Config:
+        from_attributes = True
